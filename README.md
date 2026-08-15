@@ -8,6 +8,8 @@ Its central question is not “which metabolite binds which protein?”, but:
 
 The result is an auditable set of metabolite--gene--gene--biological-term paths, plus raw, weighted, normalized, and coverage-aware scores.
 
+<img width="1099" height="622" alt="wMF7aLujOsrgBF3YM2HFItDhv0V9xCU1cWRiNRQPBYU" src="https://github.com/user-attachments/assets/f557b768-96e4-4833-b101-0e92e31896c3" />
+
 ## Install
 
 ### Option 1: install the packaged release

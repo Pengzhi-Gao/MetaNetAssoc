@@ -1,6 +1,6 @@
-# MyscRNAtools / MetaNetAssoc（中文说明）
+# MetaNetAssoc（中文说明）
 
-`MyscRNAtools` 发布 **MetaNetAssoc 0.4.0**：一个用于整合差异代谢物、差异基因（DEG）、代谢物–蛋白相互作用（MPI）、蛋白质–蛋白质相互作用（PPI）网络和基因富集结果的 R 包。
+`MetaNetAssoc` 发布 **MetaNetAssoc 0.4.0**：一个用于整合差异代谢物、差异基因（DEG）、代谢物–蛋白相互作用（MPI）、蛋白质–蛋白质相互作用（PPI）网络和基因富集结果的 R 包。
 
 它回答的核心问题不是“哪个代谢物一定会结合哪个蛋白”，而是：
 
@@ -31,8 +31,7 @@ packageVersion("MetaNetAssoc")
 ```r
 install.packages("remotes")
 remotes::install_github(
-  "Pengzhi-Gao/MyscRNAtools",
-  subdir = "MetaNetAssoc"
+  "Pengzhi-Gao/MetaNetAssoc"
 )
 ```
 

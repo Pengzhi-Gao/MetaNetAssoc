@@ -1,0 +1,172 @@
+---
+title: "DEG + HMDB workflow"
+author: "MetaNetAssoc Team"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{DEG + HMDB workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+## Purpose
+
+Version 0.2.0 starts with a differential-gene (DEG) set and differential
+metabolites identified by HMDB IDs. The workflow is:
+
+1. create a STRING PPI network from DEG;
+2. filter an HMDB--gene MPI evidence table by DEG and metabolites;
+3. perform DEG enrichment with `clusterProfiler`, exporting its result table;
+4. score metabolite--term associations with `run_metanet()`; and
+5. draw ranking, heatmap, and network figures.
+
+`species` must be either `"human"` or `"mouse"` in all network-building
+steps. The PPI source is STRING. MPI evidence must come from a traceable
+metabolite--gene source; this package deliberately does not invent MPI edges.
+
+## Input tables
+
+```{r inputs, eval=FALSE}
+# Either a vector ...
+deg <- c("CHKA", "SLC44A1", "CPT1A")
+hmdb <- c("HMDB0000122", "HMDB0000062")
+
+# ... or tables with explicit columns.
+deg_table <- data.frame(gene = deg, log2FC = c(1.2, -0.8, 1.1), padj = c(.01, .03, .02))
+metabolite_table <- data.frame(hmdb_id = hmdb)
+
+# Required MPI evidence-table columns (other columns are preserved as provenance).
+my_mpi_database <- data.frame(
+  hmdb_id = c("HMDB0000122", "HMDB0000062"),
+  metabolite_name = c("Choline", "L-Carnitine"),
+  relation_gene = c("CHKA", "CPT1A"),
+  mpi_source = c("curated_source", "curated_source"),
+  mpi_weight = c(.95, .90)
+)
+```
+
+For a biological analysis, `my_mpi_database` must record the original source
+and identifier mapping. The package's bundled MPI reference is synthetic and
+is only for testing the code path.
+
+## 1. Build PPI from STRING
+
+With internet access, query STRING directly. STRING combined scores are on the
+0--1000 scale; `build_ppi_network()` returns the standardized 0--1 score.
+
+```{r string-online, eval=FALSE}
+ppi <- build_ppi_network(
+  deg_table,
+  species = "human",
+  gene_column = "gene",
+  score_threshold = 400
+)
+```
+
+For reproducibility, download and retain the STRING edge table, then supply it
+with `string_data`. This skips all network access.
+
+```{r string-offline, eval=FALSE}
+ppi <- build_ppi_network(
+  deg,
+  species = "human",
+  string_data = downloaded_string_edges,
+  score_threshold = 400
+)
+```
+
+## 2. Build the MPI network
+
+```{r mpi, eval=FALSE}
+mpi <- build_mpi_network(
+  deg_table,
+  metabolite_table,
+  species = "human",
+  mpi_database = my_mpi_database,
+  gene_column = "gene",
+  hmdb_column = "hmdb_id"
+)
+```
+
+The output contains `metabolite_id`, `relation_gene`, `mpi_source`, and
+`mpi_weight`, ready for `run_metanet()`.
+
+## 3. Enrich DEG and export the source table
+
+`run_deg_enrichment()` uses `clusterProfiler::enrichGO`. It needs
+`clusterProfiler` plus `org.Hs.eg.db` for human or `org.Mm.eg.db` for mouse.
+The `raw` component preserves the familiar `clusterProfiler` result table;
+`enrichment` is the long term--gene representation used by this package.
+
+```{r enrichment, eval=FALSE}
+enr <- run_deg_enrichment(
+  deg_table,
+  species = "human",
+  gene_column = "gene",
+  ontology = "BP",
+  export_file = "GO_enrichment_human.csv"
+)
+
+head(enr$raw)
+```
+
+## 4. Run the network scoring
+
+```{r analysis, eval=FALSE}
+fit <- run_metanet(
+  metabolites = hmdb,
+  mpi = mpi,
+  ppi = ppi,
+  enrichment = enr$enrichment,
+  focus_genes = deg
+)
+
+head(result_scores(fit))
+result_qc(fit)
+```
+
+If `deg` is provided, `run_metanet()` can construct any missing input. For a
+reproducible analysis, passing the saved PPI and MPI tables explicitly is
+recommended.
+
+```{r one-call, eval=FALSE}
+fit <- run_metanet(
+  metabolites = hmdb,
+  deg = deg,
+  species = "human",
+  mpi_database = my_mpi_database,
+  string_data = downloaded_string_edges
+)
+```
+
+## 5. Plot and inspect results
+
+```{r plots, eval=FALSE}
+plot_term_ranking(fit, term_id = result_scores(fit)$term_id[1])
+plot_score_heatmap(fit)
+plot_association_network(fit)
+
+# Every supporting metabolite--gene--gene--term path is retained.
+head(result_edges(fit))
+```
+
+## Human and mouse MPI files built with this project
+
+The project-level files `MPI_human_KEGG_Reactome_HumanGEM_BRENDA.csv` and
+`MPI_mouse_Ensembl_orthologs.csv` use KEGG compound identifiers rather than
+HMDB IDs. Before using them with this HMDB-first workflow, add a documented
+HMDB--KEGG cross-reference and expose the HMDB ID as `hmdb_id` (or rename it
+to `metabolite_id`). The mouse table is an Ensembl orthology projection of
+human evidence and should not be treated as independently curated mouse MPI
+evidence.
+
+In version 0.3.0 these references are also bundled with the package:
+
+```{r packaged-reference, eval=FALSE}
+human_mpi_kegg <- load_mpi_reference("human")
+mouse_mpi_kegg <- load_mpi_reference("mouse")
+```

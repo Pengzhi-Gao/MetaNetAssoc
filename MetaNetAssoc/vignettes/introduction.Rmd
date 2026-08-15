@@ -1,0 +1,99 @@
+---
+title: "MetaNetAssoc: from metabolites to biological terms"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{MetaNetAssoc: from metabolites to biological terms}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+## Question answered by the package
+
+MetaNetAssoc ranks candidate metabolites for a biological term by asking whether
+genes associated with each metabolite are connected to member genes of that term
+in a PPI network. The output is an association hypothesis with an auditable path,
+not evidence of causal regulation.
+
+## End-to-end example
+
+```{r}
+library(MetaNetAssoc)
+example <- load_example_data()
+
+fit <- run_metanet(
+  metabolites = example$metabolites$metabolite_id,
+  focus_genes = example$focus_genes,
+  mpi = example$mpi,
+  ppi = example$ppi,
+  enrichment = example$enrichment,
+  include_overlap = TRUE,
+  hub_mode = "none"
+)
+
+fit
+head(result_scores(fit))
+result_qc(fit)
+```
+
+The example contains realistic pathway structure but synthetic evidence. It is
+designed so that carnitine-related metabolites connect preferentially with energy
+metabolism, glutathione and taurine with oxidative stress, and spermidine with
+spermatid differentiation.
+
+## Inspecting one association
+
+```{r}
+subset(
+  result_edges(fit),
+  metabolite_name == "Glutathione" & term_id == "GO:SIM0003"
+)
+```
+
+This edge table is the primary audit trail. It shows the MPI gene, term gene,
+evidence source, PPI confidence, path type, optional hub factor, and final edge
+weight.
+
+## Term size and hub sensitivity
+
+`edge_count` is easy to understand but grows with the number of genes in either
+set. `normalized_score` divides the weighted sum by the theoretical number of
+gene pairs. The package reports both rather than hiding this trade-off.
+
+```{r}
+fit_penalized <- run_metanet(
+  example$metabolites$metabolite_id,
+  mpi = example$mpi,
+  ppi = example$ppi,
+  enrichment = example$enrichment,
+  hub_mode = "penalize"
+)
+head(result_scores(fit_penalized))
+```
+
+## Optional term reduction
+
+Terms can be reduced using Jaccard similarity of member genes. The most
+significant term is retained as the representative.
+
+```{r}
+fit_reduced <- run_metanet(
+  example$metabolites$metabolite_id,
+  mpi = example$mpi,
+  ppi = example$ppi,
+  enrichment = example$enrichment,
+  term_similarity_cutoff = 0.7
+)
+result_term_reduction(fit_reduced)
+```
+
+## Visual summaries
+
+```{r, eval=requireNamespace("ggplot2", quietly=TRUE)}
+plot_term_ranking(fit, "Response to oxidative stress")
+plot_score_heatmap(fit)
+```
+

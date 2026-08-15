@@ -1,0 +1,35 @@
+Package: MetaNetAssoc
+Type: Package
+Title: Metabolite to Biological Term Association through MPI and PPI Networks
+Version: 0.4.0
+Authors@R: person("MetaNetAssoc", "Team", role = c("aut", "cre"),
+    email = "maintainer@example.org")
+Author: MetaNetAssoc Team [aut, cre]
+Maintainer: MetaNetAssoc Team <maintainer@example.org>
+Description: Connects candidate metabolites to enriched biological terms through
+    metabolite-protein interaction (MPI) and protein-protein interaction (PPI)
+    networks. The package preserves auditable metabolite-gene-gene-term paths,
+    reports raw and normalized association scores, supports optional hub-aware
+    weighting, and provides quality-control summaries and visualizations. Version
+    0.4.0 includes packaged human and mouse MPI reference networks, robust
+    STRING retrieval, diagnostic MPI matching, and the DEG, HMDB, STRING, and
+    clusterProfiler workflow with auditable result tables.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.1.0)
+Imports:
+    methods,
+    stats,
+    utils
+Suggests:
+    clusterProfiler,
+    ggplot2,
+    igraph,
+    knitr,
+    org.Hs.eg.db,
+    org.Mm.eg.db,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+RoxygenNote: 7.3.2

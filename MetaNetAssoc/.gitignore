@@ -1,0 +1,7 @@
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+MetaNetAssoc.Rcheck/
+*.tar.gz
+

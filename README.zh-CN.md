@@ -1,4 +1,4 @@
-<img width="1099" height="622" alt="wMF7aLujOsrgBF3YM2HFItDhv0V9xCU1cWRiNRQPBYU" src="https://github.com/user-attachments/assets/ffc70ea6-3a6f-42b8-9926-fcb12659c3ab" /># MetaNetAssoc（中文说明）
+
 
 `MetaNetAssoc` 发布 **MetaNetAssoc 0.4.0**：一个用于整合差异代谢物、差异基因（DEG）、代谢物–蛋白相互作用（MPI）、蛋白质–蛋白质相互作用（PPI）网络和基因富集结果的 R 包。
 

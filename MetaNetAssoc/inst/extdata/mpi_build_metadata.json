@@ -1,0 +1,31 @@
+{
+  "built_utc": "2026-07-25T14:19:35+00:00",
+  "human_file": "MPI_human_KEGG_Reactome_HumanGEM_BRENDA.csv",
+  "mouse_file": "MPI_mouse_Ensembl_orthologs.csv",
+  "source_workbook": "D:\\codex\\MPI_codeBase\\24-05-15 MPI筛选代谢物\\assets\\attachments\\8BD6cUxQ\\MPIs_筛选RS8_1比5.xlsx",
+  "source_workbook_sha256": "62780438449a69eb6b7d205efdf5617ba98012c250f819fe747a5efec064f5a1",
+  "source_sheet": "MPIs",
+  "human_rows": 27945,
+  "human_metabolites": 1513,
+  "human_genes": 4112,
+  "mouse_rows": 30963,
+  "mouse_metabolites": 1466,
+  "mouse_genes": 3944,
+  "mapping_stats": {
+    "human_symbols_input": 4112,
+    "human_symbols_mapped_to_ensembl": 3994,
+    "human_symbols_with_mouse_ortholog": 3800
+  },
+  "evidence_sources": [
+    "KEGG",
+    "Reactome",
+    "Human-GEM",
+    "BRENDA"
+  ],
+  "orthology_source": "Ensembl Compara BioMart",
+  "limitations": [
+    "The source workbook encodes metabolite-enzyme association, but not a reliable substrate-to-product direction per edge.",
+    "Mouse edges are orthology projections from human evidence, not independently curated mouse biochemical evidence.",
+    "Rows without a returned Ensembl mouse ortholog are intentionally excluded from the mouse table."
+  ]
+}

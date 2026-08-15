@@ -1,6 +1,6 @@
-# MyscRNAtools / MetaNetAssoc
+# MetaNetAssoc
 
-`MyscRNAtools` distributes **MetaNetAssoc 0.4.0**: an R package for integrating differential metabolites and differential genes (DEG) through metabolite--protein interaction (MPI) networks, protein--protein interaction (PPI) networks, and DEG enrichment results.
+`MetaNetAssoc` distributes **MetaNetAssoc 0.4.0**: an R package for integrating differential metabolites and differential genes (DEG) through metabolite--protein interaction (MPI) networks, protein--protein interaction (PPI) networks, and DEG enrichment results.
 
 Its central question is not “which metabolite binds which protein?”, but:
 
@@ -30,7 +30,7 @@ packageVersion("MetaNetAssoc")
 
 ```r
 install.packages("remotes")
-remotes::install_github("Pengzhi-Gao/MyscRNAtools", subdir = "MetaNetAssoc")
+remotes::install_github("Pengzhi-Gao/MetaNetAssoc")
 ```
 
 Optional capabilities need extra packages:

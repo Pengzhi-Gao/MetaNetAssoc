@@ -1,0 +1,61 @@
+term_id,term_name,gene,group,p_value,p_adjust
+GO:SIM0001,Sperm motility,CATSPER1,Motility,0.00001,0.0002
+GO:SIM0001,Sperm motility,CATSPER2,Motility,0.00001,0.0002
+GO:SIM0001,Sperm motility,ADCY10,Motility,0.00001,0.0002
+GO:SIM0001,Sperm motility,PRKACA,Motility,0.00001,0.0002
+GO:SIM0001,Sperm motility,AKAP4,Motility,0.00001,0.0002
+GO:SIM0001,Sperm motility,DNAH1,Motility,0.00001,0.0002
+GO:SIM0001,Sperm motility,SLC9C1,Motility,0.00001,0.0002
+GO:SIM0001,Sperm motility,LDHC,Motility,0.00001,0.0002
+GO:SIM0002,Sperm capacitation,ADCY10,Motility,0.00003,0.0005
+GO:SIM0002,Sperm capacitation,PRKACA,Motility,0.00003,0.0005
+GO:SIM0002,Sperm capacitation,CATSPER1,Motility,0.00003,0.0005
+GO:SIM0002,Sperm capacitation,CFTR,Motility,0.00003,0.0005
+GO:SIM0002,Sperm capacitation,SLC26A3,Motility,0.00003,0.0005
+GO:SIM0002,Sperm capacitation,AKAP3,Motility,0.00003,0.0005
+GO:SIM0002,Sperm capacitation,CABYR,Motility,0.00003,0.0005
+GO:SIM0002,Sperm capacitation,AKT1,Motility,0.00003,0.0005
+GO:SIM0003,Response to oxidative stress,NFE2L2,Stress,0.00008,0.0010
+GO:SIM0003,Response to oxidative stress,SOD1,Stress,0.00008,0.0010
+GO:SIM0003,Response to oxidative stress,GPX4,Stress,0.00008,0.0010
+GO:SIM0003,Response to oxidative stress,PRDX6,Stress,0.00008,0.0010
+GO:SIM0003,Response to oxidative stress,CAT,Stress,0.00008,0.0010
+GO:SIM0003,Response to oxidative stress,GCLC,Stress,0.00008,0.0010
+GO:SIM0003,Response to oxidative stress,GSS,Stress,0.00008,0.0010
+GO:SIM0003,Response to oxidative stress,GSTP1,Stress,0.00008,0.0010
+GO:SIM0004,Mitochondrial ATP synthesis,ATP5F1A,Metabolism,0.00012,0.0014
+GO:SIM0004,Mitochondrial ATP synthesis,ATP5F1B,Metabolism,0.00012,0.0014
+GO:SIM0004,Mitochondrial ATP synthesis,NDUFS1,Metabolism,0.00012,0.0014
+GO:SIM0004,Mitochondrial ATP synthesis,COX4I1,Metabolism,0.00012,0.0014
+GO:SIM0004,Mitochondrial ATP synthesis,TOMM20,Metabolism,0.00012,0.0014
+GO:SIM0004,Mitochondrial ATP synthesis,CPT2,Metabolism,0.00012,0.0014
+GO:SIM0004,Mitochondrial ATP synthesis,CRAT,Metabolism,0.00012,0.0014
+GO:SIM0004,Mitochondrial ATP synthesis,PDHA1,Metabolism,0.00012,0.0014
+GO:SIM0005,Lipid metabolic process,ACLY,Metabolism,0.00030,0.0030
+GO:SIM0005,Lipid metabolic process,ACACA,Metabolism,0.00030,0.0030
+GO:SIM0005,Lipid metabolic process,FASN,Metabolism,0.00030,0.0030
+GO:SIM0005,Lipid metabolic process,CPT1A,Metabolism,0.00030,0.0030
+GO:SIM0005,Lipid metabolic process,CPT2,Metabolism,0.00030,0.0030
+GO:SIM0005,Lipid metabolic process,SREBF1,Metabolism,0.00030,0.0030
+GO:SIM0005,Lipid metabolic process,ACSS2,Metabolism,0.00030,0.0030
+GO:SIM0005,Lipid metabolic process,SLC25A20,Metabolism,0.00030,0.0030
+GO:SIM0006,Spermatid differentiation,CREM,Development,0.00050,0.0045
+GO:SIM0006,Spermatid differentiation,TNP1,Development,0.00050,0.0045
+GO:SIM0006,Spermatid differentiation,TNP2,Development,0.00050,0.0045
+GO:SIM0006,Spermatid differentiation,PRM1,Development,0.00050,0.0045
+GO:SIM0006,Spermatid differentiation,PRM2,Development,0.00050,0.0045
+GO:SIM0006,Spermatid differentiation,SPATA16,Development,0.00050,0.0045
+GO:SIM0006,Spermatid differentiation,SUN5,Development,0.00050,0.0045
+GO:SIM0006,Spermatid differentiation,ODC1,Development,0.00050,0.0045
+GO:SIM0007,Cellular signaling response,HSP90AA1,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,AKT1,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,MAPK1,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,PRKACA,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,NFE2L2,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,CFTR,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,ADCY10,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,CREM,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,ACLY,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,SREBF1,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,CAT,Summary,0.00400,0.0300
+GO:SIM0007,Cellular signaling response,ATP5F1A,Summary,0.00400,0.0300

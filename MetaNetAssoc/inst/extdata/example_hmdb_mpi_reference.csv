@@ -1,0 +1,11 @@
+hmdb_id,metabolite_name,relation_gene,mpi_source,mpi_weight
+HMDB0000122,Choline,CHKA,synthetic_reference,0.95
+HMDB0000122,Choline,SLC44A1,synthetic_reference,0.88
+HMDB0000062,L-Carnitine,CPT1A,synthetic_reference,0.91
+HMDB0000062,L-Carnitine,SLC22A5,synthetic_reference,0.86
+HMDB0000671,Acetylcarnitine,CPT2,synthetic_reference,0.89
+HMDB0000671,Acetylcarnitine,CRAT,synthetic_reference,0.84
+HMDB0000259,Glutamate,GLS,synthetic_reference,0.90
+HMDB0000259,Glutamate,SLC1A3,synthetic_reference,0.82
+HMDB0000123,Glucose,HK2,synthetic_reference,0.92
+HMDB0000123,Glucose,PFKM,synthetic_reference,0.86

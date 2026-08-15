@@ -1,4 +1,4 @@
-# MetaNetAssoc（中文说明）
+<img width="1099" height="622" alt="wMF7aLujOsrgBF3YM2HFItDhv0V9xCU1cWRiNRQPBYU" src="https://github.com/user-attachments/assets/ffc70ea6-3a6f-42b8-9926-fcb12659c3ab" /># MetaNetAssoc（中文说明）
 
 `MetaNetAssoc` 发布 **MetaNetAssoc 0.4.0**：一个用于整合差异代谢物、差异基因（DEG）、代谢物–蛋白相互作用（MPI）、蛋白质–蛋白质相互作用（PPI）网络和基因富集结果的 R 包。
 
@@ -7,6 +7,9 @@
 > 哪些差异代谢物与差异基因集富集出的生物学过程之间存在网络支持的潜在关联？
 
 结果会保留可审计的“代谢物–基因–基因–生物学条目”路径，并提供原始、加权、归一化和覆盖度评分。
+
+<img width="1099" height="622" alt="wMF7aLujOsrgBF3YM2HFItDhv0V9xCU1cWRiNRQPBYU" src="https://github.com/user-attachments/assets/f557b768-96e4-4833-b101-0e92e31896c3" />
+
 
 ## 安装
 

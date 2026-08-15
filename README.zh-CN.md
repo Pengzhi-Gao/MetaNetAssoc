@@ -8,6 +8,8 @@
 
 结果会保留可审计的“代谢物–基因–基因–生物学条目”路径，并提供原始、加权、归一化和覆盖度评分。
 
+示例如下
+
 <img width="1099" height="622" alt="wMF7aLujOsrgBF3YM2HFItDhv0V9xCU1cWRiNRQPBYU" src="https://github.com/user-attachments/assets/f557b768-96e4-4833-b101-0e92e31896c3" />
 
 
